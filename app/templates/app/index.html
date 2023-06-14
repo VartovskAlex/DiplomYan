@@ -1,0 +1,48 @@
+<!-- шаблон главной страницы, вставляется в `base.html` -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main role="main">
+  {% for article in articles %} <!-- проходимся по всем статьям-->
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4">{{ article.name }}</h1> <!-- Название статьи -->
+        <p>{{ article.text }}</p> <!-- Текст статьи -->
+        {% if not request.user.is_authenticated %} <!-- если пользователь не авторизован -->
+          Чтобы оставить или просмотреть отзывы о товаре нужно авторизоваться!
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="container mb-5">
+      <div class="row">
+
+        {% for product in article.products %} <!-- проходимся по товаром статьи -->
+          <div class="col-md-4">
+            <li class="list-group-item d-flex justify-content-between lh-condensed ">
+            <div class="card" style="width: 20rem;">
+
+              <img src="{% get_media_prefix %}{{product.image}}" class="card-img-top" width="300" height="225">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5> <!-- Название товара -->
+                {% if request.user.is_authenticated %} <!-- если пользователь авторизован, то ему можно перейти на информацию и отзывы  -->
+                    <a href="{{product.category}}/{{product.slug}}">
+                      <button type="button" class="btn btn-outline-primary"><i class="fas fa-info"></i>&nbsp;&nbsp;Информация и отзывы</button>
+                    </a>
+                  <br><br>
+                {% endif %}
+                <form action="/add_to_cart/{{ product.id }}">
+                  <button type="button" class="btn btn-success"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;
+                    <input type="submit" class="btn btn-success" value="Добавить"></button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+      </div>
+    </div> <!-- /container -->
+  {% endfor %}
+
+</main>
+{% endblock %}

@@ -1,0 +1,134 @@
+<!-- Этот шаблон основной, в него вставляется блоки из других шаблонов (7 и 68 строчка) -->
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}HELP AUTO{% endblock %}</title> <!-- сюда будет подставляться блок из другого шаблона-->
+    <link rel="shortcut icon" href="../media/favicn.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body class="" data-gr-c-s-loaded="true">
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style='background-color: #545A5E'>
+  <a href="/"><img src="../media/lgo1.png" alt="" width="242" height="62"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <b><li class="nav-item active">
+          <a class="nav-link" href="../about/">
+              <span style="font-size: 20px; color: #EDF104;"><i class="fas fa-sitemap"></i></span>&nbsp;&nbsp;О компании
+          </a>
+      </li></b>
+      <b><li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span style="font-size: 20px; color: #EDF104;"><i class="fas fa-list"></i></span>&nbsp;&nbsp;Услуги и запчасти
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% for section in navbar_sections %} <!-- проходимя по всем разделам -->
+            <a class="dropdown-item" href="/{{ section.slug }}/"><button type="button" class="btn btn-outline-dark">
+                <span style="font-size: 20px; color: #EDF104;"><i class="fas fa-tools"></i></span>&nbsp;&nbsp;{{ section }}</button></a>
+          {% endfor %}
+        </div>
+      </li></b>
+      <b><li class="nav-item active">
+        <a class="nav-link" href="../news/">
+            <span style="font-size: 20px; color: #EDF104;"><i class="fas fa-info"></i></span>&nbsp;&nbsp;Новости
+        </a>
+      </li></b>
+      <b><li class="nav-item active">
+          <a class="nav-link" href="../contacts/">
+              <span style="font-size: 20px; color: #EDF104;"><i class="far fa-id-badge"></i></span>&nbsp;&nbsp;Контакты
+          </a>
+      </li></b>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="../call/"><button type="button" class="btn btn-outline-warning"><b><i class="fas fa-phone-alt"></i>&nbsp;&nbsp;Заказать звонок</b></button></a>
+    </ul>
+    &nbsp;                                                                                                                                                                                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {% if request.user.is_authenticated %} <!-- проверяет что пользователь идентифицирован, пользователь указал верный пароль и имя пользователя -->
+
+      <a class="btn btn-outline-success my-2 my-sm-0" role="button"
+         href="/cart/"> <!-- переводит на страницу корзины -->
+        <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Корзина</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a class="btn btn-outline-success my-2 my-sm-0" role="button"
+         href="{% url 'logout' %}"> <!-- выходит из учетки пользователя, logout из urls.py, атрибут name -->
+        <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Выйти</a>
+    {% else %} <!-- если пользователь не идентифицирован -->
+      <a class="btn btn-outline-success my-2 my-sm-0" role="button"
+         href="{% url 'signup' %}"> <!-- переводит на страницу регистрации, signup из urls.py, атрибут name -->
+        <i class="fas fa-user-plus">&nbsp;&nbsp;</i>Регистрация</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a class="btn btn-outline-success my-2 my-sm-0" role="button"
+         href="{% url 'login' %}"> <!-- переводит на страницу входа в учетку, login из urls.py, атрибут name -->
+        <i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Войти</a>
+    {% endif %}
+
+  </div>
+</nav>
+
+{% block content %}{% endblock %} <!-- сюда будет подставляться основной контент страницы из другого шаблона-->
+
+<div style='background-color: #71797E'>
+  <footer class="container"> <!-- футер -->
+      <br>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+            <b>О НАС</b><br><br>
+            <font size="-1" color="white">Специализированный Магазин: автозапчасти и др различные услуги.</font>
+        </div>
+        <div class="col">
+            <b>МЫ В СОЦИАЛЬНЫХ СЕТЯХ:</b><br><br>
+            &nbsp;&nbsp;
+            <a href="https://twitter.com/search?q=%23%D0%B0%D0%B2%D1%82%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81&src=typed_query">
+                <span style="font-size: 40px; color: Dodgerblue;"><i class="fab fa-twitter" width="200"></i></span>
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="https://vk.com/grafit_tv">
+                <span style="font-size: 40px; color: 4c75a3;"><i class="fab fa-vk"></i></span>
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="https://www.instagram.com/grafit_avto/">
+                <span style="font-size: 40px; color: #F77737;"><i class="fab fa-instagram"></i></span>
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="https://www.facebook.com/2bro.service/">
+                <span style="font-size: 40px; color: #3b5998;"><i class="fab fa-facebook-f"></i></span>
+            </a>
+        </div>
+        <div class="col">
+            <b>МЕНЮ:</b><br><br>
+                <a href="/"><font color="white" size="-1"><span style="font-size: 15px; color: #EDF104;"><i class="fas fa-home"></i></span>&nbsp;&nbsp;Главная</font></a><hr>
+                <a href="../about/"><font color="white" size="-1"><span style="font-size: 15px; color: #EDF104;"><i class="fas fa-sitemap"></i></span>&nbsp;&nbsp;О компании</font></a><hr>
+                &nbsp;<a href="../news/"><font color="white" size="-1"><span style="font-size: 15px; color: #EDF104;"><i class="fas fa-info"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;Новости и акции</font></a><hr>
+                <a href="../contacts/"><font color="white" size="-1"><span style="font-size: 15px; color: #EDF104;"><i class="far fa-id-badge"></i></span>&nbsp;&nbsp;Контакты</font></a><hr>
+        </div>
+        <div class="col">
+            <b>ЗАКАЗ ЗВОНКА:</b><br><br>
+            <form>
+                <div class="form-group">
+                    <font size="-1"><label for="formGroupExampleInput">Введите номер Вашего телефона</label></font>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Телефон">
+                </div>
+            </form>
+            <a href="/calldo/"><button type="button" class="btn btn-success btn-block"><i class="fas fa-phone-alt"></i>&nbsp;&nbsp;Заказать звонок</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+<div style='background-color: #545A5E'>
+    <footer class="container"> <!-- футер -->
+        <center>Copyright © AUTO HELP. Все права защищены.</center>
+    </footer>
+</div>
+
+<script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="https://kit.fontawesome.com/03ebba659c.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

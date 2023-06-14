@@ -1,0 +1,66 @@
+<!-- шаблон главной страницы, вставляется в `base.html` -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main role="main">
+	<br><br>
+		<div class="container">
+			<span style="font-size: 30px; color: #A9A9A9;"><i class="fas fa-sitemap"></i></span>
+			&nbsp;&nbsp;
+			<font size='+3' color="#9fa8da "><b>О компании</b></font></h2>
+			<hr size="2" width="400" color="#7986cb" align="left">
+			<hr size="2" width="200" color="#7986cb" align="left"><br>
+			<div class="row">
+                <div class="col s3">
+					<center><img src="../media/sale.png" height="72" width="72"><br><br>
+					<h4> Спецпредложения </h4></center>
+					<center>Каждый день новые спецпредложения для вас</center>
+                </div>
+                <div class="col s3">
+					<center><img src="../media/assortiment.png" height="72" width="72"><br><br>
+					<h4>Ассортимент </h4></center>
+					<center>Более 100 000 запчастей в наличии</center>
+                </div>
+                <div class="col s3">
+					<center><img src="../media/dostavka.png" height="72" width="72"><br><br>
+					<h4>Доставка</h4></center>
+					<center>Бесплатная доставка по всему городу</center>
+                </div>
+                <div class="col s3">
+					<center><img src="../media/kachestvo.png" height="72" width="72"><br><br>
+					<h4>Гарантия качества </h4></center>
+					<center>Самые качественные услуги и автозапчасти</center>
+                </div>
+			</div>
+		</div><br><br><br>
+		<hr size="2" width="1000" color="#7986cb"><br>&nbsp;&nbsp;
+		<h2 align="center"><span style="font-size: 30px; color: #A9A9A9;"></span><b>Немного о нас</b></font></h2><br>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+				</div>
+				<div class="col-10">
+					<p align="justify">Современный мир невозможно представить без автомобилей, которые сегодня уже являются не роскошью, а жизненной необходимостью. Чтобы машина служила своему владельцу исправно, необходимо не забывать о ее техническом обслуживании. Кроме того, любой автомобиль со временем может потребовать срочного ремонта.
+						Специалисты нашего автосервиса, имеющие многолетний опыт работы, приложат максимум усилий для достижения необходимого для заказчика результата, что подтверждается выдачей гарантии на все проделанные работы и индивидуальным подходом к каждому отдельно взятому ремонту. Также мы продаем самые качественные автозапчасти!</p>
+				</div>
+				<div class="col">
+				</div>
+			</div><br><br>
+			<div class="parallax-container">
+				<div class="parallax"><img src="../media/woman.webp" width="1100"></div>
+			</div>
+		</div><br><br>
+		<div class="container">
+			<ol><h4><font color="#9fa8da  ">Наши преимущества:</font></h1><br>
+			<ol><ul class="with-Point">
+				<li> Кузовные запчасти, детали интерьера сложные технические детали привезем на заказ сроки от 1 дня до 14 дней.<br><br>
+				<li> За 17 лет работы у компании сложились прочные связи с производителями автозапчастей.<br><br>
+				<li> Упрощенная гарантия на запасные части определенных фирм производителей, уточняйте у наших сотрудников.<br><br>
+				<li> Регистрируйте карту покупателя нашего магазина запчастей для иномарок в личном кабинете, получайте дополнительные скидки на запчасти.<br><br>
+				<li> В меню оформления заказа введите промокод LOTUS получите дополнительные 5% скидки к уже существующим, действия акции ограничено по колличеству активаций.<br><br>
+				<li> В ближайшее время мы реализуем онлайн каталог по подбору запчастей для иномарок по автомобилям.<br><br>
+			</ul></ol></ol>
+		</div>
+
+</main>
+{% endblock %}

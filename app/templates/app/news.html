@@ -1,0 +1,39 @@
+<!-- шаблон главной страницы, вставляется в `base.html` -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main role="main"><br><br>
+  <div class="container">
+  <span style="font-size: 30px; color: #A9A9A9;"><i class="fas fa-info"></i></span>&nbsp;&nbsp;
+  <font size='+3' color="#9fa8da "><b>Новости и Акции</b></font></h2>
+  <hr size="2" width="400" color="#7986cb" align="left">
+    <hr size="2" width="200" color="#7986cb" align="left"><br>
+  <div class="row row-cols-1 row-cols-md-2">
+  <div class="col mb-4">
+    <div class="card">
+      <div class="card-header">
+        Новость
+      </div>
+      <img src="../media/warning.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Скидка на комплексную диагностику 50%!</h5>
+        <p class="card-text">Комплексная диагностика всего за 890 рублей, вместо 1800 рублей!</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card">
+      <div class="card-header">
+        Акция
+      </div>
+      <img src="../media/maslo.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Замена масла бесплатно!</h5>
+        <p class="card-text">Рады сообщить что у нас акция: при покупке моторного масла в нашем автосервисе, замену масла мы произведем совершенно бесплатно.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</main>
+{% endblock %}

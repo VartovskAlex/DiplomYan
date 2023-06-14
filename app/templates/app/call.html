@@ -1,0 +1,29 @@
+<!-- шаблон главной страницы, вставляется в `base.html` -->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<main role="main"><br><br><br><br><br><br>
+    <h2 align="center"><font color="#9fa8da "><b>Заказ обратного звонка</b></font></h2><br>
+    <h6 align="center"><font color="#9fa8da ">Отправьте нам Ваш номер телефона и мы перезвоним в ближайшее время!</font></h6><br>
+    <form>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Ваше имя">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Ваш телефон">
+                </div>
+                <div class="col">
+                    <a href="/calldo/"><button type="button" class="btn btn-outline-warning"><i class="fas fa-phone-alt"></i>&nbsp;&nbsp;Заказать звонок</button></a>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+        </div>
+    </form><br><br>
+    <center><img src="../media/call.jpg" alt="" width="300" height="200"></center>>
+</main>
+{% endblock %}
